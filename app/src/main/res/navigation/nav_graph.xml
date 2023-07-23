@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.code.pixabay.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/homeToItem"
+            app:destination="@id/viewImageFragment"
+            app:enterAnim="@anim/slide_in_left">
+
+        </action>
+<!--        <argument-->
+<!--            android:name="viewModel"-->
+<!--            app:argType="com.code.pixabay.ui.viewmodels.MainVm"/>-->
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewImageFragment"
+        android:name="com.code.pixabay.ui.fragments.ViewImageFragment"
+        android:label="fragment_view_image"
+        tools:layout="@layout/fragment_view_image"
+        >
+        <argument
+            android:name="imageItem"
+            app:argType="com.code.pixabay.data.types.img.ImageItem"/>
+        <action
+            android:id="@+id/action_viewImageFragment_self"
+            app:destination="@id/viewImageFragment"
+            app:restoreState="true">
+            <argument
+                android:name="imageItem"
+                app:argType="com.code.pixabay.data.types.img.ImageItem"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/meFragment"
+        android:name="com.code.pixabay.ui.fragments.MeFragment"
+        android:label="fragment_me"
+        tools:layout="@layout/fragment_me" />
+</navigation>
